@@ -7,5 +7,4 @@
        http://cxf.apache.org/jaxws
        http://cxf.apache.org/schemas/jaxws.xsd">
     <import resource="classpath:spring-web.xml"/>
-    <jaxws:endpoint id="shopInfo" implementor="#shopInfoFacade" address="/shopInfo" />
 </beans>

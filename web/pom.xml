@@ -9,7 +9,7 @@
     <groupId>com.simon.fincrmprod</groupId>
     <artifactId>fincrmprod-web</artifactId>
     <packaging>war</packaging>
-    <name>fincrmprod-web Maven Webapp</name>
+    <name>fincrmprod-web</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -28,7 +28,6 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -36,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>com.simon.fincrmprod</groupId>
-            <artifactId>fincrmprod-service-impl</artifactId>
+            <artifactId>fincrmprod-biz-service-impl</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -6,11 +6,15 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>service/facade</module>
-        <module>service/impl</module>
+        <module>common/service/facade</module>
+        <module>common/service/integration</module>
+        <module>common/util</module>
+        <module>common/dal</module>
+        <module>biz/service-impl</module>
+        <module>biz/shared</module>
         <module>web</module>
     </modules>
-    <name>fincrmprod-parent Maven Webapp</name>
+    <name>fincrmprod-parent</name>
     <url>http://maven.apache.org</url>
     <dependencyManagement>
         <dependencies>
@@ -33,7 +37,6 @@
                 <artifactId>cxf-rt-transports-http</artifactId>
                 <version>3.1.7</version>
             </dependency>
-
             <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -41,13 +44,84 @@
                 <version>4.3.3.RELEASE</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>4.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>4.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>4.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>4.2.5.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.0.15</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.8.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.2.8</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>1.2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.38</version>
+            </dependency>
+            <!-- self dependency-->
+            <dependency>
                 <groupId>com.simon.fincrmprod</groupId>
-                <artifactId>fincrmprod-service-impl</artifactId>
+                <artifactId>fincrmprod-biz-service-impl</artifactId>
                 <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>com.simon.fincrmprod</groupId>
-                <artifactId>fincrmprod-service-facade</artifactId>
+                <artifactId>fincrmprod-biz-shared</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.simon.fincrmprod</groupId>
+                <artifactId>fincrmprod-common-dal</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.simon.fincrmprod</groupId>
+                <artifactId>fincrmprod-common-service-integration</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.simon.fincrmprod</groupId>
+                <artifactId>fincrmprod-common-service-facade</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.simon.fincrmprod</groupId>
+                <artifactId>fincrmprod-common-util</artifactId>
                 <version>1.0.0</version>
             </dependency>
             <dependency>

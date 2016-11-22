@@ -4,15 +4,15 @@
         <artifactId>fincrmprod-parent</artifactId>
         <groupId>com.simon.fincrmprod</groupId>
         <version>1.0.0</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.simon.fincrmprod</groupId>
-    <artifactId>fincrmprod-service-facade</artifactId>
+    <artifactId>fincrmprod-common-service-facade</artifactId>
     <packaging>jar</packaging>
 
-    <name>fincrmprod-service-facade</name>
+    <name>fincrmprod-common-service-facade</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -24,6 +24,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.simon.fincrmprod</groupId>
+            <artifactId>fincrmprod-common-dal</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 </project>
