@@ -5,9 +5,10 @@
 package com.simon.fincrmprod.biz.service.impl;
 
 
+import com.simon.fincrmprod.biz.shared.convertor.UserLevelConvertor;
 import com.simon.fincrmprod.biz.shared.service.UserLevelService;
-import com.simon.fincrmprod.common.dal.model.UserLevelDo;
 import com.simon.fincrmprod.service.facade.api.UserLevelFacade;
+import com.simon.fincrmprod.service.facade.model.UserLevelModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,27 +28,27 @@ public class UserLevelFacadeImpl implements UserLevelFacade {
         return userLevelService.deleteByPrimaryKey(id);
     }
 
-    public int insert(UserLevelDo record) {
-        return userLevelService.insert(record);
+    public int insert(UserLevelModel record) {
+        return userLevelService.insert(UserLevelConvertor.convert(record));
     }
 
-    public int insertSelective(UserLevelDo record) {
-        return userLevelService.insertSelective(record);
+    public int insertSelective(UserLevelModel record) {
+        return userLevelService.insertSelective(UserLevelConvertor.convert(record));
     }
 
-    public UserLevelDo selectByPrimaryKey(Integer id) {
-        return userLevelService.selectByPrimaryKey(id);
+    public UserLevelModel selectByPrimaryKey(Integer id) {
+        return UserLevelConvertor.convert(userLevelService.selectByPrimaryKey(id));
     }
 
-    public UserLevelDo selectByUserId(Integer id) {
-        return userLevelService.selectByUserId(id);
+    public UserLevelModel selectByUserId(Integer id) {
+        return UserLevelConvertor.convert(userLevelService.selectByUserId(id));
     }
 
-    public int updateByPrimaryKeySelective(UserLevelDo record) {
-        return userLevelService.updateByPrimaryKeySelective(record);
+    public int updateByPrimaryKeySelective(UserLevelModel record) {
+        return userLevelService.updateByPrimaryKeySelective(UserLevelConvertor.convert(record));
     }
 
-    public int updateByPrimaryKey(UserLevelDo record) {
-        return userLevelService.updateByPrimaryKey(record);
+    public int updateByPrimaryKey(UserLevelModel record) {
+        return userLevelService.updateByPrimaryKey(UserLevelConvertor.convert(record));
     }
 }

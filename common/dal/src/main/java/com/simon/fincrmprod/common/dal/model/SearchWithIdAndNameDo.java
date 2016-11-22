@@ -6,9 +6,9 @@ package com.simon.fincrmprod.common.dal.model;
 
 /**
  * @author jinshihao
- * @version $Id: SearchWithIdAndNameRequest.java, v 0.1 2016-09-23 15:23 jinshihao Exp $$
+ * @version $Id: SearchWithIdAndNameDo.java, v 0.1 2016-09-23 15:23 jinshihao Exp $$
  */
-public class SearchWithIdAndNameRequest {
+public class SearchWithIdAndNameDo {
     private int id;
     private String name;
 

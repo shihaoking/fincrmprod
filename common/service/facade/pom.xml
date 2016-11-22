@@ -25,10 +25,5 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.simon.fincrmprod</groupId>
-            <artifactId>fincrmprod-common-dal</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 </project>

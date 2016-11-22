@@ -38,7 +38,7 @@
     AND status =1
   </select>
 
-  <select id="getBySalesmanIdAndCustomerName" parameterType="com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest" resultMap="BaseResultMap">
+  <select id="getBySalesmanIdAndCustomerName" parameterType="com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameDo" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     FROM customer_info
@@ -56,7 +56,7 @@
     AND status =1
   </select>
 
-  <select id="getByManagerIdAndCustomerName" parameterType="com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest" resultMap="BaseResultMap">
+  <select id="getByManagerIdAndCustomerName" parameterType="com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameDo" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     FROM customer_info

@@ -1,10 +1,18 @@
 package com.simon.fincrmprod.biz.service.impl;
 
+import com.simon.fincrmprod.biz.shared.convertor.CustomerInfoConvertor;
+import com.simon.fincrmprod.biz.shared.convertor.PageInfoConvertor;
+import com.simon.fincrmprod.biz.shared.convertor.SalesmanCustomerRelationConvertor;
+import com.simon.fincrmprod.biz.shared.convertor.SearchWithIdAndNameConvertor;
 import com.simon.fincrmprod.biz.shared.service.CustomerInfoService;
 import com.simon.fincrmprod.biz.shared.service.SalesmanCustomerRelationService;
-import com.simon.fincrmprod.common.dal.model.CustomerInfoDo;
-import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest;
+import com.simon.fincrmprod.common.util.interceptor.PageInterceptor;
 import com.simon.fincrmprod.service.facade.api.CustomerInfoFacade;
+import com.simon.fincrmprod.service.facade.model.CustomerInfoModel;
+import com.simon.fincrmprod.service.facade.model.PageInfo;
+import com.simon.fincrmprod.service.facade.model.SalesmanCustomerRelationModel;
+import com.simon.fincrmprod.service.facade.request.CommonInfoQueryRequest;
+import com.simon.fincrmprod.service.facade.result.CustomerInfoQueryResult;
 import com.simon.fincrmprod.service.facade.result.CustomerInfoWithSalesmanResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,48 +37,136 @@ public class CustomerInfoFacadeImpl implements CustomerInfoFacade {
         return customerInfoService.deleteByPrimaryKey(id);
     }
 
-    public int insert(CustomerInfoDo record) {
-        return customerInfoService.insert(record);
+    public int insert(CustomerInfoModel record) {
+        return customerInfoService.insert(CustomerInfoConvertor.convert(record));
     }
 
-    public int insertSelective(CustomerInfoDo record) {
-        return customerInfoService.insertSelective(record);
+    public int insertSelective(CustomerInfoModel record) {
+        return customerInfoService.insertSelective(CustomerInfoConvertor.convert(record));
     }
 
-    public CustomerInfoDo selectByPrimaryKey(Integer id) {
-        return customerInfoService.selectByPrimaryKey(id);
+    public CustomerInfoModel selectByPrimaryKey(Integer id) {
+        return CustomerInfoConvertor.convert(customerInfoService.selectByPrimaryKey(id));
     }
 
-    public List<CustomerInfoDo> getBySalesmanId(Integer customerId) {
-        return customerInfoService.getBySalesmanId(customerId);
+    public CustomerInfoQueryResult getBySalesmanId(CommonInfoQueryRequest request) {
+        CustomerInfoQueryResult result = new CustomerInfoQueryResult();
+        if(request.getPageSize() > 0) {
+            PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+        }
+
+        List<CustomerInfoModel> customerInfoModels = CustomerInfoConvertor.convert(customerInfoService.getBySalesmanId(request.getId()));
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerInfoModelList(customerInfoModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
-    public List<CustomerInfoDo> getBySalesmanIdAndCustomerName(SearchWithIdAndNameRequest request) {
-        return customerInfoService.getBySalesmanIdAndCustomerName(request);
+    public CustomerInfoQueryResult getBySalesmanIdAndCustomerName(CommonInfoQueryRequest request) {
+        CustomerInfoQueryResult result = new CustomerInfoQueryResult();
+        if(request.getPageSize() > 0) {
+            PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+        }
+
+        List<CustomerInfoModel> customerInfoModels = CustomerInfoConvertor.convert(customerInfoService.getBySalesmanIdAndCustomerName(SearchWithIdAndNameConvertor.convert(request)));
+
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerInfoModelList(customerInfoModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
-    public List<CustomerInfoDo> getByManagerIdAndCustomerName(SearchWithIdAndNameRequest request) {
-        return customerInfoService.getByManagerIdAndCustomerName(request);
+    public CustomerInfoQueryResult getByManagerIdAndCustomerName(CommonInfoQueryRequest request) {
+        CustomerInfoQueryResult result = new CustomerInfoQueryResult();
+        if(request.getPageSize() > 0) {
+            PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+        }
+
+        List<CustomerInfoModel> customerInfoModels = CustomerInfoConvertor.convert(customerInfoService.getByManagerIdAndCustomerName(SearchWithIdAndNameConvertor.convert(request)));
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerInfoModelList(customerInfoModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
-    public List<CustomerInfoDo> getByManagerId(Integer id) {
-        return customerInfoService.getByManagerId(id);
+    public CustomerInfoQueryResult getByManagerId(CommonInfoQueryRequest request) {
+        CustomerInfoQueryResult result = new CustomerInfoQueryResult();
+        if(request.getPageSize() > 0) {
+            PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+        }
+
+        List<CustomerInfoModel> customerInfoModels = CustomerInfoConvertor.convert(customerInfoService.getByManagerId(request.getId()));
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerInfoModelList(customerInfoModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
-    public List<CustomerInfoDo> selectAll(Boolean status) {
-        return customerInfoService.selectAll(status);
+    public CustomerInfoQueryResult selectAll(CommonInfoQueryRequest request) {
+        CustomerInfoQueryResult result = new CustomerInfoQueryResult();
+        PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+
+        List<CustomerInfoModel> customerInfoModels = CustomerInfoConvertor.convert(customerInfoService.selectAll(request.getStatus()));
+
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerInfoModelList(customerInfoModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
-    public int updateByPrimaryKeySelective(CustomerInfoDo record) {
-        return customerInfoService.updateByPrimaryKeySelective(record);
+    public int updateByPrimaryKeySelective(CustomerInfoModel record) {
+        return customerInfoService.updateByPrimaryKeySelective(CustomerInfoConvertor.convert(record));
     }
 
-    public int updateByPrimaryKey(CustomerInfoDo record) {
-        return customerInfoService.updateByPrimaryKey(record);
+    public int updateByPrimaryKey(CustomerInfoModel record) {
+        return customerInfoService.updateByPrimaryKey(CustomerInfoConvertor.convert(record));
     }
 
     public CustomerInfoWithSalesmanResult getCustomerInfoWithSalesman(Integer customerId) {
-        return customerInfoService.getCustomerInfoWithSalesman(customerId);
+        CustomerInfoModel customerInfoModel = CustomerInfoConvertor.convert(customerInfoService.selectByPrimaryKey(customerId));
+        SalesmanCustomerRelationModel salesmanCustomerRelationModel = SalesmanCustomerRelationConvertor.convert(salesmanCustomerRelationService.selectByCustomerId(customerId));
+
+        CustomerInfoWithSalesmanResult result = new CustomerInfoWithSalesmanResult();
+        result.setCustomerId(customerInfoModel.getId());
+        result.setCustomerName(customerInfoModel.getCustomerName());
+        result.setPhoneNumber(customerInfoModel.getPhoneNumber());
+        result.setEmail(customerInfoModel.getEmail());
+        result.setCreator(customerInfoModel.getCreator());
+        result.setCreateTime(customerInfoModel.getCreateTime());
+        result.setStatus(customerInfoModel.getStatus());
+
+        if(salesmanCustomerRelationModel != null) {
+            result.setSalesmanId(salesmanCustomerRelationModel.getSalesmanId());
+        }else {
+            result.setSalesmanId(-1);
+        }
+
+        return result;
     }
 
 }

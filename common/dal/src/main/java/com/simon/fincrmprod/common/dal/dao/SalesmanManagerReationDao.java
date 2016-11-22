@@ -1,20 +1,20 @@
 package com.simon.fincrmprod.common.dal.dao;
 
 
-import com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo;
+import com.simon.fincrmprod.common.dal.model.SalesmanManagerRelationDo;
 
 public interface SalesmanManagerReationDao {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(SalesmanManagerReationDo record);
+    int insert(SalesmanManagerRelationDo record);
 
-    int insertSelective(SalesmanManagerReationDo record);
+    int insertSelective(SalesmanManagerRelationDo record);
 
-    SalesmanManagerReationDo selectByPrimaryKey(Integer id);
+    SalesmanManagerRelationDo selectByPrimaryKey(Integer id);
 
-    SalesmanManagerReationDo selectBySalesmanId(Integer id);
+    SalesmanManagerRelationDo selectBySalesmanId(Integer id);
 
-    int updateByPrimaryKeySelective(SalesmanManagerReationDo record);
+    int updateByPrimaryKeySelective(SalesmanManagerRelationDo record);
 
-    int updateByPrimaryKey(SalesmanManagerReationDo record);
+    int updateByPrimaryKey(SalesmanManagerRelationDo record);
 }

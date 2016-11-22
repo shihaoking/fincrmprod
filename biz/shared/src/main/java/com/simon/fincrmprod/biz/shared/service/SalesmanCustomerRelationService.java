@@ -22,5 +22,5 @@ public interface SalesmanCustomerRelationService {
 
     int updateByPrimaryKey(SalesmanCustomerRelationDo record);
 
-    List<SalesmanCustomerCountDo> selectCustomerCountBySalesmanIds(String ids);
+    List<SalesmanCustomerCountDo> selectCustomerCountBySalesmanIds(String[] idArray);
 }

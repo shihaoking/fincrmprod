@@ -178,7 +178,7 @@ public class PageInterceptor implements Interceptor {
         return page;
     }
 
-    public static class Page<E> {
+    public static class Page {
         private int     pageNum;
         private int     pageSize;
         private int     startRow;
@@ -186,21 +186,12 @@ public class PageInterceptor implements Interceptor {
         private long    total;
         private int     pages;
         private String  orderRule;
-        private List<E> result;
 
         public Page(int pageNum, int pageSize) {
             this.pageNum = pageNum;
             this.pageSize = pageSize;
             this.startRow = pageNum > 0 ? (pageNum - 1) * pageSize : 0;
             this.endRow = pageNum * pageSize;
-        }
-
-        public List<E> getResult() {
-            return result;
-        }
-
-        public void setResult(List<E> result) {
-            this.result = result;
         }
 
         public int getPages() {

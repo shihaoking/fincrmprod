@@ -1,10 +1,11 @@
 package com.simon.fincrmprod.service.facade.api;
 
 
-import com.simon.fincrmprod.common.dal.model.CustomerTraceLogDo;
+import com.simon.fincrmprod.service.facade.model.CustomerTraceLogModel;
+import com.simon.fincrmprod.service.facade.request.CommonInfoQueryRequest;
+import com.simon.fincrmprod.service.facade.result.CustomerTraceLogQueryResult;
 
 import javax.jws.WebService;
-import java.util.List;
 
 /**
  * Created by jinshihao on 16/8/24.
@@ -13,19 +14,19 @@ import java.util.List;
 public interface CustomerTraceLogFacade {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(CustomerTraceLogDo record);
+    int insert(CustomerTraceLogModel record);
 
-    int insertSelective(CustomerTraceLogDo record);
+    int insertSelective(CustomerTraceLogModel record);
 
-    CustomerTraceLogDo selectByPrimaryKey(Integer id);
+    CustomerTraceLogModel selectByPrimaryKey(Integer id);
 
-    List<CustomerTraceLogDo> selectByCustomerId(Integer customerId);
+    CustomerTraceLogQueryResult selectByCustomerId(CommonInfoQueryRequest request);
 
-    List<CustomerTraceLogDo> selectBySalesmanId(Integer salesmanId);
+    CustomerTraceLogQueryResult selectBySalesmanId(CommonInfoQueryRequest request);
 
-    List<CustomerTraceLogDo> selectByManagerId(Integer managerId);
+    CustomerTraceLogQueryResult selectByManagerId(CommonInfoQueryRequest request);
 
-    int updateByPrimaryKeySelective(CustomerTraceLogDo record);
+    int updateByPrimaryKeySelective(CustomerTraceLogModel record);
 
-    int updateByPrimaryKey(CustomerTraceLogDo record);
+    int updateByPrimaryKey(CustomerTraceLogModel record);
 }

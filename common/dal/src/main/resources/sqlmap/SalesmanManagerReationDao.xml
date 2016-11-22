@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.simon.fincrmprod.common.dal.dao.SalesmanManagerReationDao">
-  <resultMap id="BaseResultMap" type="com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo">
+  <resultMap id="BaseResultMap" type="com.simon.fincrmprod.common.dal.model.SalesmanManagerRelationDo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="salesman_id" jdbcType="INTEGER" property="salesmanId" />
     <result column="manager_id" jdbcType="INTEGER" property="managerId" />
@@ -28,7 +28,7 @@
     delete from salesman_manager_relation
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo">
+  <insert id="insert" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerRelationDo">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -37,7 +37,7 @@
     values (#{salesmanId,jdbcType=INTEGER}, #{managerId,jdbcType=INTEGER}, #{status,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo">
+  <insert id="insertSelective" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerRelationDo">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -65,7 +65,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerRelationDo">
     update salesman_manager_relation
     <set>
       <if test="salesmanId != null">
@@ -80,7 +80,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo">
+  <update id="updateByPrimaryKey" parameterType="com.simon.fincrmprod.common.dal.model.SalesmanManagerRelationDo">
     update salesman_manager_relation
     set salesman_id = #{salesmanId,jdbcType=INTEGER},
       manager_id = #{managerId,jdbcType=INTEGER},

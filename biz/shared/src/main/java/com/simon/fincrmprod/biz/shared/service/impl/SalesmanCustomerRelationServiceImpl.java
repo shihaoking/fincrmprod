@@ -42,12 +42,7 @@ public class SalesmanCustomerRelationServiceImpl implements SalesmanCustomerRela
         return salesmanCustomerReationDao.updateByPrimaryKey(record);
     }
 
-    public List<SalesmanCustomerCountDo> selectCustomerCountBySalesmanIds(String ids) {
-        if(ids == null || ids.equals("")){
-            return  null;
-        }
-
-        String[] idArray = ids.split(",");
+    public List<SalesmanCustomerCountDo> selectCustomerCountBySalesmanIds(String[] idArray) {
         return salesmanCustomerReationDao.selectCustomerCountBySalesmanIds(idArray);
     }
 }

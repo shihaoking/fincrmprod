@@ -1,9 +1,8 @@
 package com.simon.fincrmprod.biz.shared.service;
 
 
-import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest;
+import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameDo;
 import com.simon.fincrmprod.common.dal.model.UserInfoDo;
-import com.simon.fincrmprod.service.facade.result.SalesmanInfoWithManagerResult;
 
 import java.util.List;
 
@@ -27,13 +26,11 @@ public interface UserInfoService {
 
     List<UserInfoDo> selectByLevelId(Integer levelId);
 
-    List<UserInfoDo> selectByManageIdAndSalesmanName(SearchWithIdAndNameRequest request);
+    List<UserInfoDo> selectByManageIdAndSalesmanName(SearchWithIdAndNameDo request);
 
-    List<UserInfoDo> selectByLevelIdAndName(SearchWithIdAndNameRequest request);
+    List<UserInfoDo> selectByLevelIdAndName(SearchWithIdAndNameDo request);
 
     int updateByPrimaryKeySelective(UserInfoDo record);
 
     int updateByPrimaryKey(UserInfoDo record);
-
-    SalesmanInfoWithManagerResult getSalesmanInfoWithManager(Integer salesmanId);
 }

@@ -5,9 +5,15 @@
 package com.simon.fincrmprod.biz.service.impl;
 
 
+import com.simon.fincrmprod.biz.shared.convertor.CustomerTraceLogModelConvertor;
+import com.simon.fincrmprod.biz.shared.convertor.PageInfoConvertor;
 import com.simon.fincrmprod.biz.shared.service.CustomerTraceLogService;
-import com.simon.fincrmprod.common.dal.model.CustomerTraceLogDo;
+import com.simon.fincrmprod.common.util.interceptor.PageInterceptor;
 import com.simon.fincrmprod.service.facade.api.CustomerTraceLogFacade;
+import com.simon.fincrmprod.service.facade.model.CustomerTraceLogModel;
+import com.simon.fincrmprod.service.facade.model.PageInfo;
+import com.simon.fincrmprod.service.facade.request.CommonInfoQueryRequest;
+import com.simon.fincrmprod.service.facade.result.CustomerTraceLogQueryResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,36 +35,79 @@ public class CustomerTraceLogFacadeImpl implements CustomerTraceLogFacade {
         return customerTraceLogService.deleteByPrimaryKey(id);
     }
 
-    public int insert(CustomerTraceLogDo record) {
-        return customerTraceLogService.insert(record);
+    public int insert(CustomerTraceLogModel record) {
+        return customerTraceLogService.insert(CustomerTraceLogModelConvertor.convert(record));
     }
 
-    public int insertSelective(CustomerTraceLogDo record) {
-        return customerTraceLogService.insertSelective(record);
+    public int insertSelective(CustomerTraceLogModel record) {
+        return customerTraceLogService.insertSelective(CustomerTraceLogModelConvertor.convert(record));
     }
 
-    public CustomerTraceLogDo selectByPrimaryKey(Integer id) {
-        return customerTraceLogService.selectByPrimaryKey(id);
+    public CustomerTraceLogModel selectByPrimaryKey(Integer id) {
+        return CustomerTraceLogModelConvertor.convert(customerTraceLogService.selectByPrimaryKey(id));
     }
 
-    public List<CustomerTraceLogDo> selectByCustomerId(Integer customerId) {
-        return customerTraceLogService.selectByCustomerId(customerId);
+    public CustomerTraceLogQueryResult selectByCustomerId(CommonInfoQueryRequest request) {
+        CustomerTraceLogQueryResult result = new CustomerTraceLogQueryResult();
+        if(request.getPageSize() > 0) {
+            PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+        }
+
+
+        List<CustomerTraceLogModel> customerTraceLogModels = CustomerTraceLogModelConvertor.convert(customerTraceLogService.selectByCustomerId(request.getId()));
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerTraceLogModelList(customerTraceLogModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
-    public List<CustomerTraceLogDo> selectBySalesmanId(Integer salesmanId) {
-        return customerTraceLogService.selectBySalesmanId(salesmanId);
+    public CustomerTraceLogQueryResult selectBySalesmanId(CommonInfoQueryRequest request) {
+        CustomerTraceLogQueryResult result = new CustomerTraceLogQueryResult();
+        if(request.getPageSize() > 0) {
+            PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+        }
+
+        List<CustomerTraceLogModel> customerTraceLogModels = CustomerTraceLogModelConvertor.convert(customerTraceLogService.selectBySalesmanId(request.getId()));
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerTraceLogModelList(customerTraceLogModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
-    public List<CustomerTraceLogDo> selectByManagerId(Integer managerId) {
-        return customerTraceLogService.selectByManagerId(managerId);
+    public CustomerTraceLogQueryResult selectByManagerId(CommonInfoQueryRequest request) {
+        CustomerTraceLogQueryResult result = new CustomerTraceLogQueryResult();
+        if(request.getPageSize() > 0) {
+            PageInterceptor.startPage(request.getPageNum(), request.getPageSize());
+        }
+
+        List<CustomerTraceLogModel> customerTraceLogModels = CustomerTraceLogModelConvertor.convert(customerTraceLogService.selectByManagerId(request.getId()));
+        PageInterceptor.Page page = PageInterceptor.endPage();
+
+        result.setCustomerTraceLogModelList(customerTraceLogModels);
+
+        PageInfo pageInfo = PageInfoConvertor.convert(page);
+
+        result.setPageInfo(pageInfo);
+
+        return result;
     }
 
 
-    public int updateByPrimaryKeySelective(CustomerTraceLogDo record) {
-        return customerTraceLogService.updateByPrimaryKeySelective(record);
+    public int updateByPrimaryKeySelective(CustomerTraceLogModel record) {
+        return customerTraceLogService.updateByPrimaryKeySelective(CustomerTraceLogModelConvertor.convert(record));
     }
 
-    public int updateByPrimaryKey(CustomerTraceLogDo record) {
-        return customerTraceLogService.updateByPrimaryKey(record);
+    public int updateByPrimaryKey(CustomerTraceLogModel record) {
+        return customerTraceLogService.updateByPrimaryKey(CustomerTraceLogModelConvertor.convert(record));
     }
 }

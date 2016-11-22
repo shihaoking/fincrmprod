@@ -1,7 +1,7 @@
 package com.simon.fincrmprod.service.facade.api;
 
-import com.simon.fincrmprod.common.dal.model.SalesmanCustomerCountDo;
-import com.simon.fincrmprod.common.dal.model.SalesmanCustomerRelationDo;
+import com.simon.fincrmprod.service.facade.model.SalesmanCustomerCountModel;
+import com.simon.fincrmprod.service.facade.model.SalesmanCustomerRelationModel;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -13,15 +13,15 @@ import java.util.List;
 public interface SalesmanCustomerRelationFacade {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(SalesmanCustomerRelationDo record);
+    int insert(SalesmanCustomerRelationModel record);
 
-    int insertSelective(SalesmanCustomerRelationDo record);
+    int insertSelective(SalesmanCustomerRelationModel record);
 
-    SalesmanCustomerRelationDo selectByCustomerId(Integer customerId);
+    SalesmanCustomerRelationModel selectByCustomerId(Integer customerId);
 
-    int updateByPrimaryKeySelective(SalesmanCustomerRelationDo record);
+    int updateByPrimaryKeySelective(SalesmanCustomerRelationModel record);
 
-    int updateByPrimaryKey(SalesmanCustomerRelationDo record);
+    int updateByPrimaryKey(SalesmanCustomerRelationModel record);
 
-    List<SalesmanCustomerCountDo> selectCustomerCountBySalesmanIds(String ids);
+    List<SalesmanCustomerCountModel> selectCustomerCountBySalesmanIds(String ids);
 }

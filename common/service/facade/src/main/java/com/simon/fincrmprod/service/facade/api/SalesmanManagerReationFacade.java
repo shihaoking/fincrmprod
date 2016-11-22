@@ -4,7 +4,7 @@
  */
 package com.simon.fincrmprod.service.facade.api;
 
-import com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo;
+import com.simon.fincrmprod.service.facade.model.SalesmanManagerRelationModel;
 
 import javax.jws.WebService;
 
@@ -16,15 +16,15 @@ import javax.jws.WebService;
 public interface SalesmanManagerReationFacade {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(SalesmanManagerReationDo record);
+    int insert(SalesmanManagerRelationModel record);
 
-    int insertSelective(SalesmanManagerReationDo record);
+    int insertSelective(SalesmanManagerRelationModel record);
 
-    SalesmanManagerReationDo selectByPrimaryKey(Integer id);
+    SalesmanManagerRelationModel selectByPrimaryKey(Integer id);
 
-    SalesmanManagerReationDo selectBySalesmanId(Integer id);
+    SalesmanManagerRelationModel selectBySalesmanId(Integer id);
 
-    int updateByPrimaryKeySelective(SalesmanManagerReationDo record);
+    int updateByPrimaryKeySelective(SalesmanManagerRelationModel record);
 
-    int updateByPrimaryKey(SalesmanManagerReationDo record);
+    int updateByPrimaryKey(SalesmanManagerRelationModel record);
 }

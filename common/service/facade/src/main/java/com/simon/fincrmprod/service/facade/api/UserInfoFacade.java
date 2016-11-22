@@ -1,9 +1,10 @@
 package com.simon.fincrmprod.service.facade.api;
 
 
-import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest;
-import com.simon.fincrmprod.common.dal.model.UserInfoDo;
+import com.simon.fincrmprod.service.facade.model.UserInfoModel;
+import com.simon.fincrmprod.service.facade.request.CommonInfoQueryRequest;
 import com.simon.fincrmprod.service.facade.result.SalesmanInfoWithManagerResult;
+import com.simon.fincrmprod.service.facade.result.UserInfoQueryResult;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -15,27 +16,27 @@ import java.util.List;
 public interface UserInfoFacade {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(UserInfoDo record);
+    int insert(UserInfoModel record);
 
-    int insertSelective(UserInfoDo record);
+    int insertSelective(UserInfoModel record);
 
-    UserInfoDo selectByPrimaryKey(Integer id);
+    UserInfoModel selectByPrimaryKey(Integer id);
 
-    UserInfoDo selectByName(String name);
+    UserInfoModel selectByName(String name);
 
-    List<UserInfoDo> selectAll(Boolean status);
+    UserInfoQueryResult selectAll(CommonInfoQueryRequest request);
 
-    List<UserInfoDo> selectByManageId(Integer managerId);
+    UserInfoQueryResult selectByManageId(CommonInfoQueryRequest request);
 
-    List<UserInfoDo> selectByLevelId(Integer levelId);
+    UserInfoQueryResult selectByLevelId(CommonInfoQueryRequest request);
 
-    List<UserInfoDo> selectByManageIdAndSalesmanName(SearchWithIdAndNameRequest request);
+    UserInfoQueryResult selectByManageIdAndSalesmanName(CommonInfoQueryRequest request);
 
-    List<UserInfoDo> selectByLevelIdAndName(SearchWithIdAndNameRequest request);
+    UserInfoQueryResult selectByLevelIdAndName(CommonInfoQueryRequest request);
 
-    int updateByPrimaryKeySelective(UserInfoDo record);
+    int updateByPrimaryKeySelective(UserInfoModel record);
 
-    int updateByPrimaryKey(UserInfoDo record);
+    int updateByPrimaryKey(UserInfoModel record);
 
     SalesmanInfoWithManagerResult getSalesmanInfoWithManager(Integer salesmanId);
 }

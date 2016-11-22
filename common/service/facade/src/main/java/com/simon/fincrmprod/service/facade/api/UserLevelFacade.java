@@ -1,7 +1,6 @@
 package com.simon.fincrmprod.service.facade.api;
 
-
-import com.simon.fincrmprod.common.dal.model.UserLevelDo;
+import com.simon.fincrmprod.service.facade.model.UserLevelModel;
 
 import javax.jws.WebService;
 
@@ -12,15 +11,15 @@ import javax.jws.WebService;
 public interface UserLevelFacade {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(UserLevelDo record);
+    int insert(UserLevelModel record);
 
-    int insertSelective(UserLevelDo record);
+    int insertSelective(UserLevelModel record);
 
-    UserLevelDo selectByPrimaryKey(Integer id);
+    UserLevelModel selectByPrimaryKey(Integer id);
 
-    UserLevelDo selectByUserId(Integer id);
+    UserLevelModel selectByUserId(Integer id);
 
-    int updateByPrimaryKeySelective(UserLevelDo record);
+    int updateByPrimaryKeySelective(UserLevelModel record);
 
-    int updateByPrimaryKey(UserLevelDo record);
+    int updateByPrimaryKey(UserLevelModel record);
 }

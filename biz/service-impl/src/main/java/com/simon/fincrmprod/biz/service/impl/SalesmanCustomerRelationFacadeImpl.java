@@ -1,9 +1,11 @@
 package com.simon.fincrmprod.biz.service.impl;
 
+import com.simon.fincrmprod.biz.shared.convertor.SalesmanCustomerCountConvertor;
+import com.simon.fincrmprod.biz.shared.convertor.SalesmanCustomerRelationConvertor;
 import com.simon.fincrmprod.biz.shared.service.SalesmanCustomerRelationService;
-import com.simon.fincrmprod.common.dal.model.SalesmanCustomerCountDo;
-import com.simon.fincrmprod.common.dal.model.SalesmanCustomerRelationDo;
 import com.simon.fincrmprod.service.facade.api.SalesmanCustomerRelationFacade;
+import com.simon.fincrmprod.service.facade.model.SalesmanCustomerCountModel;
+import com.simon.fincrmprod.service.facade.model.SalesmanCustomerRelationModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,27 +25,32 @@ public class SalesmanCustomerRelationFacadeImpl implements SalesmanCustomerRelat
         return salesmanCustomerRelationService.deleteByPrimaryKey(id);
     }
 
-    public int insert(SalesmanCustomerRelationDo record) {
-        return salesmanCustomerRelationService.insert(record);
+    public int insert(SalesmanCustomerRelationModel record) {
+        return salesmanCustomerRelationService.insert(SalesmanCustomerRelationConvertor.convert(record));
     }
 
-    public int insertSelective(SalesmanCustomerRelationDo record) {
-        return salesmanCustomerRelationService.insertSelective(record);
+    public int insertSelective(SalesmanCustomerRelationModel record) {
+        return salesmanCustomerRelationService.insertSelective(SalesmanCustomerRelationConvertor.convert(record));
     }
 
-    public SalesmanCustomerRelationDo selectByCustomerId(Integer customerId) {
-        return salesmanCustomerRelationService.selectByCustomerId(customerId);
+    public SalesmanCustomerRelationModel selectByCustomerId(Integer customerId) {
+        return SalesmanCustomerRelationConvertor.convert(salesmanCustomerRelationService.selectByCustomerId(customerId));
     }
 
-    public int updateByPrimaryKeySelective(SalesmanCustomerRelationDo record) {
-        return salesmanCustomerRelationService.updateByPrimaryKeySelective(record);
+    public int updateByPrimaryKeySelective(SalesmanCustomerRelationModel record) {
+        return salesmanCustomerRelationService.updateByPrimaryKeySelective(SalesmanCustomerRelationConvertor.convert(record));
     }
 
-    public int updateByPrimaryKey(SalesmanCustomerRelationDo record) {
-        return salesmanCustomerRelationService.updateByPrimaryKey(record);
+    public int updateByPrimaryKey(SalesmanCustomerRelationModel record) {
+        return salesmanCustomerRelationService.updateByPrimaryKey(SalesmanCustomerRelationConvertor.convert(record));
     }
 
-    public List<SalesmanCustomerCountDo> selectCustomerCountBySalesmanIds(String ids) {
-        return salesmanCustomerRelationService.selectCustomerCountBySalesmanIds(ids);
+    public List<SalesmanCustomerCountModel> selectCustomerCountBySalesmanIds(String ids) {
+        if(ids == null || ids.equals("")){
+            return  null;
+        }
+
+        String[] idArray = ids.split(",");
+        return SalesmanCustomerCountConvertor.convert(salesmanCustomerRelationService.selectCustomerCountBySalesmanIds(idArray));
     }
 }

@@ -5,9 +5,7 @@ import com.simon.fincrmprod.biz.shared.service.CustomerInfoService;
 import com.simon.fincrmprod.common.dal.dao.CustomerInfoDao;
 import com.simon.fincrmprod.common.dal.dao.SalesmanCustomerRelationDao;
 import com.simon.fincrmprod.common.dal.model.CustomerInfoDo;
-import com.simon.fincrmprod.common.dal.model.SalesmanCustomerRelationDo;
-import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest;
-import com.simon.fincrmprod.service.facade.result.CustomerInfoWithSalesmanResult;
+import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameDo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,11 +43,11 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
         return customerInfoDao.getBySalesmanId(customerId);
     }
 
-    public List<CustomerInfoDo> getBySalesmanIdAndCustomerName(SearchWithIdAndNameRequest request) {
+    public List<CustomerInfoDo> getBySalesmanIdAndCustomerName(SearchWithIdAndNameDo request) {
         return customerInfoDao.getBySalesmanIdAndCustomerName(request);
     }
 
-    public List<CustomerInfoDo> getByManagerIdAndCustomerName(SearchWithIdAndNameRequest request) {
+    public List<CustomerInfoDo> getByManagerIdAndCustomerName(SearchWithIdAndNameDo request) {
         return customerInfoDao.getByManagerIdAndCustomerName(request);
     }
 
@@ -68,28 +66,4 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
     public int updateByPrimaryKey(CustomerInfoDo record) {
         return customerInfoDao.updateByPrimaryKey(record);
     }
-
-    public CustomerInfoWithSalesmanResult getCustomerInfoWithSalesman(Integer customerId) {
-        CustomerInfoDo customerInfoDo = customerInfoDao.selectByPrimaryKey(customerId);
-        SalesmanCustomerRelationDo salesmanCustomerRelationDo = salesmanCustomerRelationDao.selectByCustomerId(customerId);
-
-        CustomerInfoWithSalesmanResult result = new CustomerInfoWithSalesmanResult();
-        result.setCustomerId(customerInfoDo.getId());
-        result.setCustomerName(customerInfoDo.getCustomerName());
-        result.setPhoneNumber(customerInfoDo.getPhoneNumber());
-        result.setEmail(customerInfoDo.getEmail());
-        result.setCreator(customerInfoDo.getCreator());
-        result.setCreateTime(customerInfoDo.getCreateTime());
-        result.setStatus(customerInfoDo.getStatus());
-
-        if(salesmanCustomerRelationDo != null) {
-            result.setSalesmanId(salesmanCustomerRelationDo.getSalesmanId());
-        }else {
-            result.setSalesmanId(-1);
-        }
-
-        return result;
-    }
-
-
 }

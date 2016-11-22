@@ -3,7 +3,7 @@ package com.simon.fincrmprod.common.dal.dao;
 
 
 import com.simon.fincrmprod.common.dal.model.CustomerInfoDo;
-import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest;
+import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameDo;
 
 import java.util.List;
 
@@ -22,9 +22,9 @@ public interface CustomerInfoDao {
 
     List<CustomerInfoDo> selectAll(Boolean status);
 
-    List<CustomerInfoDo> getBySalesmanIdAndCustomerName(SearchWithIdAndNameRequest request);
+    List<CustomerInfoDo> getBySalesmanIdAndCustomerName(SearchWithIdAndNameDo request);
 
-    List<CustomerInfoDo> getByManagerIdAndCustomerName(SearchWithIdAndNameRequest request);
+    List<CustomerInfoDo> getByManagerIdAndCustomerName(SearchWithIdAndNameDo request);
 
     int updateByPrimaryKeySelective(CustomerInfoDo record);
 

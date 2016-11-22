@@ -10,7 +10,8 @@ import java.util.Date;
  * @author jinshihao
  * @version $Id: SalesmanInfoWithManagerResult.java, v 0.1 2016-09-13 16:08 jinshihao Exp $$
  */
-public class SalesmanInfoWithManagerResult {
+public class SalesmanInfoWithManagerResult extends CommonResult {
+    private static final long serialVersionUID = -6925604984612355510L;
     private Integer salesmanId;
 
     private String userName;

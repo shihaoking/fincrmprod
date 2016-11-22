@@ -7,7 +7,7 @@ package com.simon.fincrmprod.biz.shared.service.impl;
 
 import com.simon.fincrmprod.biz.shared.service.SalesmanManagerReationService;
 import com.simon.fincrmprod.common.dal.dao.SalesmanManagerReationDao;
-import com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo;
+import com.simon.fincrmprod.common.dal.model.SalesmanManagerRelationDo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,27 +25,27 @@ public class SalesmanManagerRelationServiceImpl implements SalesmanManagerReatio
         return salesmanManagerReationDao.deleteByPrimaryKey(id);
     }
 
-    public int insert(SalesmanManagerReationDo record) {
+    public int insert(SalesmanManagerRelationDo record) {
         return salesmanManagerReationDao.insert(record);
     }
 
-    public int insertSelective(SalesmanManagerReationDo record) {
+    public int insertSelective(SalesmanManagerRelationDo record) {
         return salesmanManagerReationDao.insertSelective(record);
     }
 
-    public SalesmanManagerReationDo selectByPrimaryKey(Integer id) {
+    public SalesmanManagerRelationDo selectByPrimaryKey(Integer id) {
         return salesmanManagerReationDao.selectByPrimaryKey(id);
     }
 
-    public SalesmanManagerReationDo selectBySalesmanId(Integer id) {
+    public SalesmanManagerRelationDo selectBySalesmanId(Integer id) {
         return salesmanManagerReationDao.selectBySalesmanId(id);
     }
 
-    public int updateByPrimaryKeySelective(SalesmanManagerReationDo record) {
+    public int updateByPrimaryKeySelective(SalesmanManagerRelationDo record) {
         return salesmanManagerReationDao.updateByPrimaryKeySelective(record);
     }
 
-    public int updateByPrimaryKey(SalesmanManagerReationDo record) {
+    public int updateByPrimaryKey(SalesmanManagerRelationDo record) {
         return salesmanManagerReationDao.updateByPrimaryKey(record);
     }
 }

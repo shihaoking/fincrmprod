@@ -1,12 +1,12 @@
 package com.simon.fincrmprod.service.facade.api;
 
 
-import com.simon.fincrmprod.common.dal.model.CustomerInfoDo;
-import com.simon.fincrmprod.common.dal.model.SearchWithIdAndNameRequest;
+import com.simon.fincrmprod.service.facade.model.CustomerInfoModel;
+import com.simon.fincrmprod.service.facade.request.CommonInfoQueryRequest;
+import com.simon.fincrmprod.service.facade.result.CustomerInfoQueryResult;
 import com.simon.fincrmprod.service.facade.result.CustomerInfoWithSalesmanResult;
 
 import javax.jws.WebService;
-import java.util.List;
 
 /**
  * Created by jinshihao on 16/8/24.
@@ -15,26 +15,26 @@ import java.util.List;
 public interface CustomerInfoFacade {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(CustomerInfoDo record);
+    int insert(CustomerInfoModel record);
 
-    int insertSelective(CustomerInfoDo record);
+    int insertSelective(CustomerInfoModel record);
 
-    CustomerInfoDo selectByPrimaryKey(Integer id);
+    CustomerInfoModel selectByPrimaryKey(Integer id);
 
-    List<CustomerInfoDo> getBySalesmanId(Integer customerId);
+    CustomerInfoQueryResult getBySalesmanId(CommonInfoQueryRequest request);
 
-    List<CustomerInfoDo> getBySalesmanIdAndCustomerName(SearchWithIdAndNameRequest request);
+    CustomerInfoQueryResult getBySalesmanIdAndCustomerName(CommonInfoQueryRequest request);
 
-    List<CustomerInfoDo> getByManagerIdAndCustomerName(SearchWithIdAndNameRequest request);
+    CustomerInfoQueryResult getByManagerIdAndCustomerName(CommonInfoQueryRequest request);
 
 
-    List<CustomerInfoDo> getByManagerId(Integer id);
+    CustomerInfoQueryResult getByManagerId(CommonInfoQueryRequest request);
 
-    List<CustomerInfoDo> selectAll(Boolean status);
+    CustomerInfoQueryResult selectAll(CommonInfoQueryRequest request);
 
-    int updateByPrimaryKeySelective(CustomerInfoDo record);
+    int updateByPrimaryKeySelective(CustomerInfoModel record);
 
-    int updateByPrimaryKey(CustomerInfoDo record);
+    int updateByPrimaryKey(CustomerInfoModel record);
 
     CustomerInfoWithSalesmanResult getCustomerInfoWithSalesman(Integer customerId);
 }

@@ -1,6 +1,6 @@
 package com.simon.fincrmprod.service.facade.api;
 
-import com.simon.fincrmprod.common.dal.model.LevelInfoDo;
+import com.simon.fincrmprod.service.facade.model.LevelInfoModel;
 
 import javax.jws.WebService;
 
@@ -11,13 +11,13 @@ import javax.jws.WebService;
 public interface LevelInfoFacade {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(LevelInfoDo record);
+    int insert(LevelInfoModel record);
 
-    int insertSelective(LevelInfoDo record);
+    int insertSelective(LevelInfoModel record);
 
-    LevelInfoDo selectByPrimaryKey(Integer id);
+    LevelInfoModel selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(LevelInfoDo record);
+    int updateByPrimaryKeySelective(LevelInfoModel record);
 
-    int updateByPrimaryKey(LevelInfoDo record);
+    int updateByPrimaryKey(LevelInfoModel record);
 }

@@ -4,6 +4,7 @@
  */
 package com.simon.fincrmprod.service.facade.result;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +12,8 @@ import java.util.Map;
  * @author jinshihao
  * @version $Id: CommonResult.java, v 0.1 2016-09-10 15:47 jinshihao Exp $$
  */
-public class CommonResult {
+public class CommonResult implements Serializable {
+    private static final long serialVersionUID = 110974913472113336L;
     private boolean success = true;
     private String errorMsg;
     private Map<String, String> externalData = new HashMap();

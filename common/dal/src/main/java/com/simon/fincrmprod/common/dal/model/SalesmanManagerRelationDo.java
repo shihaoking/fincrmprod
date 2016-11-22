@@ -1,6 +1,6 @@
 package com.simon.fincrmprod.common.dal.model;
 
-public class SalesmanManagerReationDo {
+public class SalesmanManagerRelationDo {
     private Integer id;
 
     private Integer salesmanId;

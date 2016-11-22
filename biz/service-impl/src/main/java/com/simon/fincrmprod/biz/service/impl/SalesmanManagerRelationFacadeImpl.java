@@ -4,10 +4,10 @@
  */
 package com.simon.fincrmprod.biz.service.impl;
 
-
+import com.simon.fincrmprod.biz.shared.convertor.SalesmanManagerRelationConvertor;
 import com.simon.fincrmprod.biz.shared.service.SalesmanManagerReationService;
-import com.simon.fincrmprod.common.dal.model.SalesmanManagerReationDo;
 import com.simon.fincrmprod.service.facade.api.SalesmanManagerReationFacade;
+import com.simon.fincrmprod.service.facade.model.SalesmanManagerRelationModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,27 +28,32 @@ public class SalesmanManagerRelationFacadeImpl implements SalesmanManagerReation
         return salesmanManagerReationService.deleteByPrimaryKey(id);
     }
 
-    public int insert(SalesmanManagerReationDo record) {
-        return salesmanManagerReationService.insert(record);
+    public int insert(SalesmanManagerRelationModel record) {
+        return salesmanManagerReationService.insert(SalesmanManagerRelationConvertor
+            .convert(record));
     }
 
-    public int insertSelective(SalesmanManagerReationDo record) {
-        return salesmanManagerReationService.insertSelective(record);
+    public int insertSelective(SalesmanManagerRelationModel record) {
+        return salesmanManagerReationService.insertSelective(SalesmanManagerRelationConvertor
+            .convert(record));
     }
 
-    public SalesmanManagerReationDo selectByPrimaryKey(Integer id) {
-        return salesmanManagerReationService.selectByPrimaryKey(id);
+    public SalesmanManagerRelationModel selectByPrimaryKey(Integer id) {
+        return SalesmanManagerRelationConvertor.convert(salesmanManagerReationService
+            .selectByPrimaryKey(id));
     }
 
-    public SalesmanManagerReationDo selectBySalesmanId(Integer id) {
-        return salesmanManagerReationService.selectBySalesmanId(id);
+    public SalesmanManagerRelationModel selectBySalesmanId(Integer id) {
+        return SalesmanManagerRelationConvertor.convert(salesmanManagerReationService.selectBySalesmanId(id));
     }
 
-    public int updateByPrimaryKeySelective(SalesmanManagerReationDo record) {
-        return salesmanManagerReationService.updateByPrimaryKeySelective(record);
+    public int updateByPrimaryKeySelective(SalesmanManagerRelationModel record) {
+        return salesmanManagerReationService
+            .updateByPrimaryKeySelective(SalesmanManagerRelationConvertor.convert(record));
     }
 
-    public int updateByPrimaryKey(SalesmanManagerReationDo record) {
-        return salesmanManagerReationService.updateByPrimaryKey(record);
+    public int updateByPrimaryKey(SalesmanManagerRelationModel record) {
+        return salesmanManagerReationService.updateByPrimaryKey(SalesmanManagerRelationConvertor
+            .convert(record));
     }
 }
